@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     
-    const response = await fetch( 'https://lisag3.github.io/WebGIS/Temp_by_CD_mod.geojson' );
+    const response = await fetch( 'https://lisag3.github.io/WebGIS/Lab3/Temp_by_CD_mod.geojson' );
     const commDist = await response.json();
     
     const commDistGroup = L.geoJSON(commDist, {
