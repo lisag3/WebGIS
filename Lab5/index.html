@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lisa - Lab 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" 
+     rel="stylesheet" 
+     integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
+     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+    <script src="leaflet-providers.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" 
+    crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link rel="stylesheet" href="./Fullscreen/leaflet.fullscreen.css" />
+    <script src="./Fullscreen/Leaflet.fullscreen.js"></script>
+    <script src="app.js"></script>
+
+    <script src="leaflet-search.min.js"></script>
+    <link href="leaflet-search.min.css" rel="stylesheet" />
+
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    </head>
+<body>
+    <div class="container-lg" style="height: 100%">
+        <div class="row text-center border border-danger-subtle rounded-1" 
+            style="height: 10%; color: #A20B77; background-color: #FFDDD6">
+            <div class="col">
+                <h1>Heat Vulnerability of NYC Neighborhoods</h1>
+            </div>
+        </div>
+        <div class="row" style="height: 85%;color: #A20B77; background-color: #FFDDD6">
+            <div class="col text-center border border-danger-subtle rounded-1">
+                <h5>How to use this map</h5>
+                <text>Choose a background layer and select visibility of data layers from the layers control box 
+                    in the upper right. 
+                    The most recently selected layer is shown on top. 
+                    Click on water features points for more information. 
+                    Hover over Surface Temps layer for information on each neighborhood. 
+                    Use the search box to search for neighborhoods by name. 
+                    <br>
+                    <br>Heat Vulnerability Index is a score from 1 to 5, with 5 being the most vulnerable to severe heat events.
+                    <br>
+                    <br>Surface temperatures are in degrees Fahrenheit.
+                </text>
+            </div>
+            <div id="map" class="col-7 text-center border border-danger-subtle rounded-1"> 
+            Main Map
+            </div>
+            <div class="col text-center border border-danger-subtle rounded-1">
+                <h5>Data Sources</h5>
+                <text>All data used to create this map is publically available from NYC agencies.
+                    <br>
+                    <br><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/">Environment & Health Data Portal</a> 
+                    <br>
+                    <br><a href="https://www.nycgovparks.org/">Department of Parks and Recreation</a>
+                    <br>
+                    <br><a href="https://opendata.cityofnewyork.us/">NYCOpenData</a>
+                </text>
+            </div>
+        </div>
+        <div class="row text-center border border-danger-subtle rounded-1" 
+            style="height: 5%; color: #A20B77; background-color: #FFDDD6">
+            <div class="col-12">
+                Lisa Gaetjens | Hunter College | 2023
+            </div>    
+        </div>
+            
+    </div>
+    
+    </body>
+</html>
