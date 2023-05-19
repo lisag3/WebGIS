@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lisa - final project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    <script src="leaflet-providers.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" 
+    crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link rel="stylesheet" href="./Fullscreen/leaflet.fullscreen.css" />
+    <script src="./Fullscreen/Leaflet.fullscreen.js"></script>
+    <script src="app.js"></script>
+
+    <script src="leaflet-search.min.js"></script>
+    <link href="leaflet-search.min.css" rel="stylesheet" />
+
+    <link href="styles.css" rel="stylesheet" />
+
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    </head>
+<body>
+    <div class="container-xl" style="height: 100%;">
+        <div class="row g-0 text-center text-success-emphasis border border-success-subtle rounded-1" 
+            style="height: 10%; background-color: #f7fcf5">
+            <div class="col text-center">
+                <h1 style="margin-top: 1rem;">Heat Vulnerability of NYC Neighborhoods</h1>
+            </div>
+        </div>
+        <div class="row g-0" style="height: 85%">
+            <div id="map" class="col-9 text-left border border-success-subtle rounded-1" style="height: 100%"> 
+                Main Map
+            </div>
+        <div class="col border border-success-subtle rounded-1"
+            style="background-color: #f7fcf5">
+        <div class="accordion" id="Accordion">
+            <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Background
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>What is heat vulnerability?</strong> 
+                <br>Exteme heat events are becoming more common due to global climate change.
+                But not everyone is affected equally by heatwaves. Black and low income residents and those
+                with certain health conditions are more likley to be harmed. This map helps visualize areas 
+                where residents may be most at risk from exteme heat events. City, state, and federal agencies
+                can use this information to plan mitigation strategies such as planting more urban trees and 
+                adding cooling water features to public spaces. 
+            </div>
+            </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    How to use
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <strong>How to use this map.</strong> 
+                <br> Use the layer control box in the upper right to choose a data layer
+                to view. Check and uncheck the boxes for Parks and New Cooling Features to 
+                toggle their visbility.  
+                Hover over a neighborhood to see info on it in the box at top right. 
+                Use the search box to search for neighborhoods by name. 
+                    </div>
+                </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Layer info
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body"> 
+                        <strong>Vegetative cover</strong> is the percent of land area covered by plants. 
+                        Vegetation lowers temperatures and reduces heat risks. 
+                        <br><strong>The Heat Vulnerability Index</strong> (HVI) is a composite score from 1 to 5 
+                        showing how vulnerable residents of a neighborhood are to heat emergencies. It uses data 
+                        on temperature, green space, AC access, poverty, and Black population.
+                        <br><strong>Summer surface temperature</strong> is a measure of ground temperature at midday on a hot day.
+                        The data was collected by satellite on July 17, 2018. 
+                        <br><strong>Parks</strong> shows all the NYC parks greater than one acre.
+                        <br><strong>New Cooling Features</strong> shows locations of new drinking fountains and spray showers installed
+                        in parks through the 2020 Cool It! NYC initiative. Areas with a HVI score of 5 were given priority
+                        for new cooling features. 
+                        </div>
+                    </div>
+                    </div>
+            <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Legends
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <h6>Vegetative Cover %</h6> 
+                <div>
+                    20%
+                    <div class="legend-box" style="background-image: linear-gradient(to right,#f7fcf5, #e5f5e0, #c7e9c0, #a1d99b, #74c476, #41ab5d, #238b45, #006d2c, #00441b);"></div>
+                    70%
+                </div>
+                <br>
+                <h6>Heat Vulnerability Index</h6> 
+                <div>
+                    Least to most vulnerable
+                    <br>1
+                    <div class="legend-box" style="background-image: linear-gradient(to right, #fff5f0, #fee0d2, #fcbba1, #fc9272, #fb6a4a, #ef3b2c, #cb181d, #a50f15, #67000d);"></div>
+                    5
+                </div>
+                <br>
+                <h6>Summer Surface Temperature</h6> 
+                <div>
+                    93&#176F
+                    <div class="legend-box" style="background-image: linear-gradient(to right, #EEE55B, #DBAE62, #C87869, #B54170, #A20B77);"></div>
+                    103&#176F
+                </div>
+                <br>
+                <h6>Parks</h6> 
+                <div>
+                    <div class="legend-box" style="background-color: #33cc33;"></div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Data Sources
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>All data used to create this map is publically available.</strong> 
+                    <br><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/">Environment & Health Data Portal</a> 
+                    <br><a href="https://www.nycgovparks.org/">Department of Parks and Recreation</a>
+                    <br><a href="https://opendata.cityofnewyork.us/">NYCOpenData</a>
+                    <br><strong>Further reading:</strong>
+                    <br><a href="https://doi.org/10.1289/ehp.1408178">Heat Wave-Related Mortality in NYC</a>
+                    <br><a href="https://gothamist.com/news/how-trees-act-nycs-natural-air-conditioning-units">How Trees Act as NYC's Natural AC Units</a>
+                    <br><a href="https://www.nature.org/content/dam/tnc/nature/en/documents/Public_Health_Benefits_Urban_Trees_FINAL.pdf">Public Health Benefits of Urban Trees</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        <div class="row text-center text-success-emphasis" 
+            style="height: 5%; background-color: #FFFFFF">
+            <div class="col-12">
+                Lisa Gaetjens | Hunter College | 2023
+            </div>    
+        </div>
+            
+    </div>
+    
+    </body>
+</html>
